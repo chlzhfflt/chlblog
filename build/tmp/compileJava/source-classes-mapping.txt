@@ -1,4 +1,0 @@
-com/blog/chl/springboot/web/HelloController.java
- com.blog.chl.springboot.web.HelloController
-com/blog/chl/springboot/Application.java
- com.blog.chl.springboot.Application
