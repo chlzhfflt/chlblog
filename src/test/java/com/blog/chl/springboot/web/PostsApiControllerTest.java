@@ -2,6 +2,8 @@ package com.blog.chl.springboot.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -89,9 +91,20 @@ public class PostsApiControllerTest {
         assertThat(all.get(0).getContent()).isEqualTo(content);
     }
 
+    // PostsRepository 초기화
+//    @Test
+//    @BeforeEach
+//    public void setUpPostsRepository(){
+//
+//        System.out.println("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
+//        postsRepository.deleteAll();
+//    }
+
     @Test
     @WithMockUser(roles = "USER")
     public void Posts_수정된다() throws Exception {
+//        postsRepository.deleteAll(); // ★초기화해주기
+
         // given
         Posts savedPosts = postsRepository.save(Posts.builder()
                 .title("title")
@@ -126,8 +139,8 @@ public class PostsApiControllerTest {
         List<Posts> all = postsRepository.findAll();
         System.out.println("★수정된 타이틀 : "+ all.get(0).getTitle());
         System.out.println("☆비교할 타이틀 : "+ expectedTitle);
-        assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
-        assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
+        assertThat(all.get(1).getTitle()).isEqualTo(expectedTitle);
+        assertThat(all.get(1).getContent()).isEqualTo(expectedContent);
 
     }
 
